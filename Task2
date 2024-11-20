@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+public class HealthAndFitnessTracker {
+
+    static class FitnessData {
+        int steps;
+        int calories;
+        int waterIntake; // in milliliters
+
+        FitnessData() {
+            this.steps = 0;
+            this.calories = 0;
+            this.waterIntake = 0;
+        }
+
+        void updateSteps(int steps) {
+            this.steps += steps;
+        }
+
+        void updateCalories(int calories) {
+            this.calories += calories;
+        }
+
+        void updateWater(int water) {
+            this.waterIntake += water;
+        }
+
+        void displaySummary() {
+            System.out.println("\nFitness Summary:");
+            System.out.println("Steps Walked: " + steps);
+            System.out.println("Calories Consumed: " + calories);
+            System.out.println("Water Intake: " + waterIntake + " ml");
+        }
+    }
+
+    public static void main(String[] args) {
+        FitnessData data = new FitnessData();
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            System.out.println("\nHealth and Fitness Tracker");
+            System.out.println("1. Update Steps");
+            System.out.println("2. Update Calories");
+            System.out.println("3. Update Water Intake");
+            System.out.println("4. View Summary");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter steps walked: ");
+                    int steps = scanner.nextInt();
+                    data.updateSteps(steps);
+                    System.out.println("Steps updated!");
+                    break;
+
+                case 2:
+                    System.out.print("Enter calories consumed: ");
+                    int calories = scanner.nextInt();
+                    data.updateCalories(calories);
+                    System.out.println("Calories updated!");
+                    break;
+
+                case 3:
+                    System.out.print("Enter water intake (in ml): ");
+                    int water = scanner.nextInt();
+                    data.updateWater(water);
+                    System.out.println("Water intake updated!");
+                    break;
+
+                case 4:
+                    data.displaySummary();
+                    break;
+
+                case 5:
+                    System.out.println("Exiting Health and Fitness Tracker. Stay Healthy!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+        } while (choice != 5);
+
+        scanner.close();
+    }
+}
